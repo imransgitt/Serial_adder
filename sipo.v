@@ -1,6 +1,8 @@
-module sipo (clk,a,shift,out);
+
+
+module sipo (clk,reset,a,shift,out);
 input clk;
-//input reset;
+input reset;
 input shift;
 input a;
 output reg [3:0]out;
@@ -10,12 +12,14 @@ reg [2:0]counter;
 
 always@(posedge clk) begin
 
- /*if(reset) begin
- 	counter<=3'b000;
- 	end*/
+ if(reset) begin
+ 	counter=3'b000;
+ 	mem=3'b000;
+ 	out=1'b0;
+ 	end
 
  	
-if(shift)begin  //right shift happening fine
+ if(shift)begin  //right shift happening fine
 	//mem[3]<=a;	
 	if(counter<3'b011) begin
 	mem[3]<=a;

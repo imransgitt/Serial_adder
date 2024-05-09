@@ -3,14 +3,14 @@
 //test bench in verilog only for simulation level of verification 
 module serial_adder_tb();
 reg clk;
-//reg reset;
+reg reset;
 reg load;
 reg shift;
 reg [3:0]a;
 reg [3:0]b;
 wire [3:0]sum;
 
-serial_adder dut(.clk(clk),.load(load),.shift(shift),.a(a),.b(b),.sum(sum));
+serial_adder dut(.clk(clk),.reset(reset),.load(load),.shift(shift),.a(a),.b(b),.sum(sum));
 
 initial begin
 $dumpfile("output_wave.vcd");
@@ -19,10 +19,13 @@ end
 
 initial begin
 clk=1'b0;
+reset=1'b1;
 load=1'b1;
 shift=1'b1;
-a=4'b1100;
-b=4'b0111;
+#5 reset=1'b0;
+#20
+a=4'b1101;
+b=4'b0010;
 
 #500 $finish;
 end

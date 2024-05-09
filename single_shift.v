@@ -1,7 +1,7 @@
-module single_shift(clk,shift,a,y);
+module single_shift(clk,reset,shift,a,y);
 input a;
 input clk;
-//input reset;
+input reset;
 input shift;
 output reg y;
 
@@ -9,15 +9,13 @@ output reg y;
 
 always@(posedge clk) begin
 
-/*if(reset) begin
+if(reset) begin
 	y<=1'b0;
-	end */
+	end 
 
-case(shift)
-1'b1:y<=a;
-1'b0:y<=1'b0;
-default:y<=1'b0;
-endcase
+
+else
+	y<=a;
 	
 	
 end
