@@ -25,7 +25,7 @@ wire w5;
 piso p1 (.clk(clk),.reset(reset),.load(load),.shift(shift),.d_in(a),.d_out(w1));
 piso p2 (.clk(clk),.reset(reset),.load(load),.shift(shift),.d_in(b),.d_out(w2));
 full_adder f1 (.a(w1),.b(w2),.cin(w4),.sum(w5),.cout(w3));
-single_shift s1(.clk(clk),.reset(reset),.shift(shift),.a(w3),.y(w4));
+single_shift s1(.clk(clk),.reset(reset),.shift(shift),.load(load),.a(w3),.y(w4));
 sipo sp1 (.clk(clk),.reset(reset),.shift(shift),.a(w5),.out(sum));
 
 endmodule

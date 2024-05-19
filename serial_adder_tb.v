@@ -18,14 +18,20 @@ $dumpvars(0,serial_adder_tb);
 end
 
 initial begin
-clk=1'b0;
+
+clk=1'b1;
 reset=1'b1;
+//load=1'b1;
+//shift=1'b1;
+
+#20
+reset=1'b0;
 load=1'b1;
 shift=1'b1;
-#5 reset=1'b0;
+
 #20
-a=4'b1101;
-b=4'b0010;
+a=4'b0101;
+b=4'b0101;
 
 #500 $finish;
 end
